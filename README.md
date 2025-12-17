@@ -1,48 +1,77 @@
-# AmbedkarGPT Intern Task
+# AmbedkarGPT – Graph-based RAG System
 
-This project is a command line Retrieval Augmented Generation system built for the Kalpit Pvt Ltd AI Intern assignment. The system uses the provided speech text by Dr. B. R. Ambedkar as the only knowledge source. It converts the text into embeddings, stores them in a local vector database, retrieves relevant context for a user query, and generates an answer through a locally running Mistral model using Ollama.
+This project implements a local Retrieval-Augmented Generation (RAG) system
+inspired by the SemRAG / GraphRAG approach, using Dr. B. R. Ambedkar’s writings
+as the knowledge source.
+
+The system combines semantic chunking, a knowledge graph built from named
+entities, and local LLM inference using Ollama.
+
+---
 
 ## Features
-- Compatible with Python 3.8 and above
-- Retrieval Augmented Generation pipeline built using LangChain
-- Local vector database created with ChromaDB
-- Embeddings generated using MiniLM L6 v2 from HuggingFace
-- Local inference with Ollama using a Mistral model
-- Fully offline after installation
+
+- Semantic sentence-level chunking
+- Knowledge graph construction using named entities
+- Louvain community detection
+- Graph-based local retrieval
+- Local LLM inference using Ollama (no cloud dependency)
+- Interactive Gradio chat interface
+
+---
 
 ## Project Structure
-project-folder/
-    main.py
-    speech.txt
-    requirements.txt
-    vectorstore/        (created automatically)
+ambedkartask/
+├── data/
+│ └── Ambedkar_book.pdf
+├── main.py
+├── requirements.txt
+└── README.md
 
-## Setup
 
-### Install Ollama
-Download the Windows installer from:
-https://ollama.com/download
-Run it as administrator and restart your computer after installation.
+---
 
-### Pull a Mistral model
-Use a model supported by your system memory. The default option is:
-ollama pull mistral
+## Setup Instructions
 
-### Create a virtual environment
-python -m venv venv
-venv\Scripts\activate
+### 1. Install Python dependencies
 
-### Install dependencies
-pip install --upgrade pip
 pip install -r requirements.txt
+python -m spacy download en_core_web_sm
 
-### Build the vector store
-python main.py --rebuild
 
-### Run the application
+### 2. Install and start Ollama
+
+Download Ollama from:
+https://ollama.com
+
+Then run:
+
+
+
+ollama pull llama3
+
+
+---
+
+## Running the Application
+
+From the project root directory:
+
+
+
 python main.py
 
-Ask questions based only on the content of speech.txt. Type exit to stop the program.
 
-- The vectorstore directory is created automatically on first run
-- If your system has low memory, the model name in main.py can be changed to a lighter Mistral variant supported by your Ollama installation
+Optional parameters:
+
+python main.py --local_top_k 7 --global_top_k 4
+
+After running, a Gradio interface will open in your browser.
+
+---
+
+## Notes
+
+- The system runs fully locally.
+- No external APIs or cloud services are required.
+- PDF path and retrieval parameters are configurable
