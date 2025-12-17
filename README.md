@@ -91,38 +91,16 @@ python main.py --local_top_k 7
 
 A Gradio interface will open in your browser.
 
-Notes
+## Notes
+- The system runs entirely locally.
+- No external APIs or cloud services are used.
+- Intermediate results are cached for efficiency.
+- The architecture is modular and easily extensible.
 
-The system runs entirely locally.
+## Future Improvements
+- Add global community-level retrieval
+- Introduce reranking strategies
+- Support multiple documents
+- Add evaluation metrics
 
-No external APIs or cloud services are used.
-
-Intermediate results are cached for efficiency.
-
-The architecture is modular and easily extensible.
-
-Future Improvements
-
-Add global community-level retrieval
-
-Introduce reranking strategies
-
-Support multiple documents
-
-Add evaluation metrics
-
-
----
-
-### Why this will now render correctly on GitHub
-
-- Triple backticks (` ``` `) are used for **code blocks**
-- `bash` is specified for syntax highlighting
-- Blank lines are placed where Markdown requires them
-- Folder structure is shown as monospaced text
-- Headings and bullet points are correctly separated
-
-
-
-## Project Structure
 
