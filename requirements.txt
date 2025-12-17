@@ -1,6 +1,10 @@
-langchain==0.1.0
-chromadb==0.4.24
-sentence-transformers==2.2.2
-transformers==4.35.0
-torch
+sentence-transformers
+faiss-cpu
+networkx
+python-louvain
+PyPDF2
+spacy
+nltk
+gradio
 ollama
+numpy
